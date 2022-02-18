@@ -1,25 +1,38 @@
 import MeetupList from "../components/meetups/MeetupList";
 import { MongoClient } from "mongodb";
+import Head from "next/head";
+import { Fragment } from "react/cjs/react.production.min";
 
-const DUMMY_MEETUPS = [
-  {
-    id: "m1",
-    title: "The First Meetups",
-    image:
-      "https://secure-content.meetupstatic.com/images/classic-events/501750153/676x380.webp",
-    address: "test address",
-  },
-  {
-    id: "m2",
-    title: "The First Meetups",
-    image:
-      "https://secure-content.meetupstatic.com/images/classic-events/501573074/676x380.webp",
-    address: "test address",
-  },
-];
+// const DUMMY_MEETUPS = [
+//   {
+//     id: "m1",
+//     title: "The First Meetups",
+//     image:
+//       "https://secure-content.meetupstatic.com/images/classic-events/501750153/676x380.webp",
+//     address: "test address",
+//   },
+//   {
+//     id: "m2",
+//     title: "The First Meetups",
+//     image:
+//       "https://secure-content.meetupstatic.com/images/classic-events/501573074/676x380.webp",
+//     address: "test address",
+//   },
+// ];
 
 const HomePage = (props) => {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>React Meetups</title>
+        <meta
+          name="description"
+          content="Browse a huge list of highly active React meetups!"
+        />
+      </Head>
+      <MeetupList meetups={props.meetups} />
+    </Fragment>
+  );
 };
 
 // export const getServerSideProps = async (context) => {

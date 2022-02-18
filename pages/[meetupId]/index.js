@@ -1,18 +1,23 @@
-import { useRouter } from "next/router";
 import { MongoClient, ObjectId } from "mongodb";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
+import Head from "next/dist/next-server/lib/head";
+
+import { Fragment } from "react";
 
 const DetailPage = (props) => {
-  const router = useRouter();
-  const meetupId = router.query.meetupId;
-
   return (
-    <MeetupDetail
-      title={props.meetupData.title}
-      image={props.meetupData.image}
-      address={props.meetupData.address}
-      description={props.meetupData.description}
-    />
+    <Fragment>
+      <Head>
+        <title>{props.meetupData.title}</title>
+        <meta name="description" content={props.meetupData.description} />
+      </Head>
+      <MeetupDetail
+        title={props.meetupData.title}
+        image={props.meetupData.image}
+        address={props.meetupData.address}
+        description={props.meetupData.description}
+      />
+    </Fragment>
   );
 };
 
